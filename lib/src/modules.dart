@@ -1,12 +1,12 @@
 import 'package:module_core/module_core.dart';
 
 // 各層をまとめる親モジュール
-class ModuleCore<Data, Domain, Presentation> {
+class RootModule<Data, Domain, Presentation> {
   final Data data;
   final Domain domain;
   final Presentation presentation;
 
-  ModuleCore({
+  RootModule({
     required Data data,
     required Domain domain,
     required Presentation presentation,
