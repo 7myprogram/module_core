@@ -63,3 +63,24 @@ class UsecaseCollection extends InstanceCollection {
     });
   }
 }
+
+// ビュービルダーの実態を管理
+class ViewBuilderCollection extends InstanceCollection {
+  // ユースケースをコレクションに登録
+  @override
+  void register<T>(T instance) {
+    // ViewBuilderAttachmentを継承したクラスのみ許可
+    if (instance is! ViewBuilderAttachment) {
+      throw TypeError();
+    }
+    super.register<T>(instance);
+  }
+
+  // 設定済みのビュービルダーにユースケースコレクションを登録
+  void setUsecaseCollection(UsecaseCollection collection) {
+    _instances.forEach((type, usecase) {
+      final temp = usecase as UsecaseHolder;
+      temp.usecaseCollection = collection;
+    });
+  }
+}

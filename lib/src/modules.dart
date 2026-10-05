@@ -34,7 +34,7 @@ class RootModule<Data, Domain, Presentation> {
   }
 }
 
-// データ層を形成するモジュールのアダプター
+// データ層を形成するモジュール
 mixin DataModule {
   final _dataSourceCollection = DataSourceCollection();
   final _repositoryCollection = RepositoryCollection();
@@ -62,7 +62,7 @@ mixin DataModule {
   }
 }
 
-// ドメイン層を形成するモジュールのアダプター
+// ドメイン層を形成するモジュール
 mixin DomainModule {
   final _usecaseCollection = UsecaseCollection();
 
@@ -75,24 +75,24 @@ mixin DomainModule {
   }
 
   // Usecase登録処理実装の強制
-  void registerUsecases(UsecaseCollection usecaseRegister);
+  void registerUsecases(UsecaseCollection usecaseCollection);
 }
 
-// プレゼンテーション層を形成するモジュールのアダプター
+// プレゼンテーション層を形成するモジュール
 mixin PresentationModule {
-  late final UsecaseCollection _usecaseCollection;
+  final _viewBuilderCollection = ViewBuilderCollection();
 
   // 初期化処理
   void _initialization(UsecaseCollection collection) {
     // ユースケースコレクションを設定
-    _usecaseCollection = collection;
-
-    afterInitialization();
+    _viewBuilderCollection.setUsecaseCollection(collection);
   }
 
-  void afterInitialization() {}
-
-  void takeUsecases(UsecaseHolder holder) {
-    holder.usecaseCollection = _usecaseCollection;
+  // ビュービルダーを取得
+  T getViewBuilder<T>() {
+    return _viewBuilderCollection.getInstance<T>();
   }
+
+  // ViewBuilder登録処理実装の強制
+  void registerViewBuilder(ViewBuilderCollection viewBuilderCollection);
 }

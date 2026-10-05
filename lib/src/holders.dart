@@ -21,8 +21,8 @@ mixin class RepositoryHolder {
     _repositoryCollection = repositoryCollection;
   }
 
-  Repo getRepository<Repo>() {
-    return _repositoryCollection.getInstance<Repo>();
+  Repository getRepository<Repository>() {
+    return _repositoryCollection.getInstance<Repository>();
   }
 }
 
@@ -36,7 +36,7 @@ mixin class UsecaseHolder {
   }
 
   // ユースケースを取得
-  T getUsecase<T>() {
-    return _usecaseCollection.getInstance<T>();
+  Usecase getUsecase<Usecase>() {
+    return _usecaseCollection.getInstance<Usecase>();
   }
 }
