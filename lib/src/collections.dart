@@ -79,8 +79,9 @@ class ViewBuilderCollection extends InstanceCollection {
   // 設定済みのビュービルダーにユースケースコレクションを登録
   void setUsecaseCollection(UsecaseCollection collection) {
     _instances.forEach((type, usecase) {
-      final temp = usecase as UsecaseHolder;
+      final temp = usecase as ViewBuilderAttachment;
       temp.usecaseCollection = collection;
+      temp.processAfterSetUsecase();
     });
   }
 }

@@ -5,6 +5,6 @@ typedef RepositoryAttachment = DataSourceHolder;
 typedef UsecaseAttachment = RepositoryHolder;
 
 abstract class ViewBuilderAttachment<Screen> with UsecaseHolder {
-  void afterGetUsecase() {}
+  void processAfterSetUsecase() {}
   Screen buildScreen(dynamic args);
 }
