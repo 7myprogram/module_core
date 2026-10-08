@@ -84,6 +84,9 @@ mixin PresentationModule {
 
   // 初期化処理
   void _initialization(UsecaseCollection collection) {
+    // ビュービルダーをコレクションに登録
+    registerViewBuilder(_viewBuilderCollection);
+
     // ユースケースコレクションを設定
     _viewBuilderCollection.setUsecaseCollection(collection);
   }

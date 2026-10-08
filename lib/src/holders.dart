@@ -2,7 +2,7 @@ import 'package:module_core/module_core.dart';
 
 // DataSourceCollectionを受け取り、それを保持する。
 mixin class DataSourceHolder {
-  late DataSourceCollection _dataSourceCollection;
+  late final DataSourceCollection _dataSourceCollection;
 
   set dataSourceCollection(DataSourceCollection dataSourceCollection) {
     _dataSourceCollection = dataSourceCollection;
@@ -15,7 +15,7 @@ mixin class DataSourceHolder {
 
 // RepositoryCollectionを受け取り、それを保持する。
 mixin class RepositoryHolder {
-  late RepositoryCollection _repositoryCollection;
+  late final RepositoryCollection _repositoryCollection;
 
   set repositoryCollection(RepositoryCollection repositoryCollection) {
     _repositoryCollection = repositoryCollection;
@@ -28,7 +28,7 @@ mixin class RepositoryHolder {
 
 // UsecaseCollectionを受け取り、それを保持する。
 mixin class UsecaseHolder {
-  late UsecaseCollection _usecaseCollection;
+  late final UsecaseCollection _usecaseCollection;
 
   // ユースケースコレクションを設定
   set usecaseCollection(UsecaseCollection collection) {
@@ -38,5 +38,11 @@ mixin class UsecaseHolder {
   // ユースケースを取得
   Usecase getUsecase<Usecase>() {
     return _usecaseCollection.getInstance<Usecase>();
+  }
+
+  UsecaseHolder copyUsecaseHolder() {
+    final holder = UsecaseHolder();
+    holder.usecaseCollection = _usecaseCollection;
+    return holder;
   }
 }
