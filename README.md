@@ -91,7 +91,7 @@ class SomeViewBuilder with ViewBuilderAttachment<Screen> {
 ```
 
 # モジュール
-このパッケージでは、データ層、ドメイン層、プレゼンテーション層をそれぞれモジュールとして表現し、それらはリポジトリやユースケースといった構成要素を管理します。以下の実装作業はmodule_core_generatorを利用し自動化できます。
+このパッケージでは、データ層、ドメイン層、プレゼンテーション層をそれぞれモジュールとして表現し、それらはリポジトリやユースケースといった構成要素を管理します。以下の実装作業は[module_core_generator](https://github.com/7myprogram/module_core_generator)を利用し自動化できます。
 
 ## データモジュール
 データソースとリポジトリを管理し、リポジトリからデータソースを取得できるようにします。
